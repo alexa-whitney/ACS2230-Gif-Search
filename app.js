@@ -1,17 +1,17 @@
 const handlebars = require('express-handlebars');
-const config = require('./config');
-
 
 // Require Libraries
+const express = require('express');
+
+require('dotenv').config()
+
 // Require tenorjs near the top of the file
 const Tenor = require("tenorjs").client({
     // Replace with your own key
-    "Key": config.TENOR_API_KEY, // https://tenor.com/developer/keyregistration
+    "Key": process.env.API_KEY, // https://tenor.com/developer/keyregistration
     "Filter": "high", // "off", "low", "medium", "high", not case sensitive
     "Locale": "en_US", // Your locale here, case-sensitivity depends on input
 });
-
-const express = require('express');
 
 // App Setup
 const app = express();
@@ -32,21 +32,26 @@ app.set('view engine', 'handlebars');
 app.set('views', './views');
 
 // Routes
+// example URL "http://localhost:3000/?term=hey"
 app.get('/', (req, res) => {
     // Handle the home page when we haven't queried yet
     term = ""
     if (req.query.term) {
         term = req.query.term
-    }
     // Tenor.search.Query("SEARCH KEYWORD HERE", "LIMIT HERE")
-    Tenor.Search.Query(term, "10")
+        Tenor.Search.Query(term, "10")
         .then(response => {
             // store the gifs we get back from the search
             const gifs = response;
-            // pass the gifs as an object into the home page
+             // pass the gifs as an object into the home page
             res.render('home', { gifs })
         }).catch(console.error);
-})
+    }
+    else {
+        res.render('home', { gifs: [] })
+    }
+});
+  
 
 app.get('/greetings/:name', (req, res) => {
     // grab the name from the path provided
