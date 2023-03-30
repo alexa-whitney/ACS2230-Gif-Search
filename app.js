@@ -1,9 +1,13 @@
 const handlebars = require('express-handlebars');
-
 // Require Libraries
 const express = require('express');
-
 require('dotenv').config()
+
+// App Setup
+const app = express();
+
+// Telling the Express app that my static files will live in the public folder
+app.use(express.static('public'));
 
 // Require tenorjs near the top of the file
 const Tenor = require("tenorjs").client({
@@ -12,9 +16,6 @@ const Tenor = require("tenorjs").client({
     "Filter": "high", // "off", "low", "medium", "high", not case sensitive
     "Locale": "en_US", // Your locale here, case-sensitivity depends on input
 });
-
-// App Setup
-const app = express();
 
 // Middleware
 //allow Express (our web framework) to render HTML templates and send them back to the client using a new function

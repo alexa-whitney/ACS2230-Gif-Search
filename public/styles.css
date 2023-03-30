@@ -1,0 +1,73 @@
+/* ROOT FONT STYLES */
+* {
+    font-family: "Lato", Helvetica, sans-serif;
+    color: #fe7880;
+    line-height: 1.5;
+  }
+  
+  h1 {
+    text-align: center;
+  }
+
+  .container {
+    text-align: center;
+    background-color: #333447;
+  }
+  
+  input {
+    padding: 0.5em 0.6em;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-shadow: inset 0 1px 3px #ddd;
+    border-radius: 4px;
+    vertical-align: middle;
+    box-sizing: border-box;
+    width: 300px;
+  }
+  
+  form {
+    margin-bottom: 10px;
+    display: block;
+    text-align: center;
+    flex-direction: column;
+  }
+  
+  button {
+    display: block;
+    flex-direction: column;
+    align-items: center;
+    height: 31px;
+    width: 110px;
+    text-align: center;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 200;
+    background: transparent;
+    border-radius: 8px;
+    margin: 10px auto;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 3px solid #fe7880;
+    color: #fe7880;
+  }
+  
+  .gif-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: .4rem;
+    align-items: center;
+  }
+  
+  form {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .tenor-gif-embed {
+    height: 300px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: 10px solid turquoise;
+    border-radius: 50px;
+  }

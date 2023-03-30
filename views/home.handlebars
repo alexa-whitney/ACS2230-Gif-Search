@@ -1,9 +1,11 @@
-<h1>Search for GIFS</h1>
-<form action="/">
-  <input type="text" name="term">
-  <button type="submit">Search</button>
-</form>
-{{#each gifs}}
+<div class="container"</div>
+  <h1>Search for GIFS</h1>
+  <form action="/">
+    <input type="text" name="term">
+    <button type="submit">Search</button>
+  </form>
+  <div class="gif-grid">
+    {{#each gifs}}
 {{!-- set the data-width to whatever you want --}}
 {{!-- Note that we're using properties of the gif (id, itemurl, url) to fill in information needed to render the gif --}}
     <div class="tenor-gif-embed" data-postid="{{this.id}}" data-share-method="host" data-width="500px"
@@ -11,4 +13,6 @@
           href="{{this.itemurl}}"></a>
       <a href="{{this.url}}"></a></div>
     <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
-{{/each}}
+    {{/each}}
+  </div>
+</div>
