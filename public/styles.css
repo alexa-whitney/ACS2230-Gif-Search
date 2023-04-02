@@ -60,7 +60,7 @@ button {
   font-weight: 200;
   background: transparent;
   border-radius: 8px;
-  margin: 10px auto;
+  margin: 20px auto;
   cursor: pointer;
   transition: all 0.3s ease;
   border: 3px solid #fe7880;
@@ -103,4 +103,9 @@ form {
 .footer p {
   margin: 0;
   font-size: 20px;
+}
+
+.trending-btn {
+    font-size: larger;
+    width: 150px;
 }

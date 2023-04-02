@@ -1,6 +1,7 @@
 const handlebars = require('express-handlebars');
 // Require Libraries
 const express = require('express');
+const axios = require('axios');
 require('dotenv').config()
 
 // App Setup
@@ -39,20 +40,36 @@ app.get('/', (req, res) => {
     term = ""
     if (req.query.term) {
         term = req.query.term
-    // Tenor.search.Query("SEARCH KEYWORD HERE", "LIMIT HERE")
+        // Tenor.search.Query("SEARCH KEYWORD HERE", "LIMIT HERE")
         Tenor.Search.Query(term, "10")
-        .then(response => {
-            // store the gifs we get back from the search
-            const gifs = response;
-             // pass the gifs as an object into the home page
-            res.render('home', { gifs })
-        }).catch(console.error);
+            .then(response => {
+                // store the gifs we get back from the search
+                const gifs = response;
+                // pass the gifs as an object into the home page
+                res.render('home', { gifs })
+            }).catch(console.error);
     }
     else {
         res.render('home', { gifs: [] })
     }
 });
-  
+
+// CHALLENGE - Add Trending Button
+app.get('/trending', async (req, res) => {
+    try {
+      const response = await axios.get(`https://api.tenor.com/v1/trending?key=${process.env.API_KEY}&limit=20`);
+      const gifs = response.data.results.map(result => ({
+        id: result.id,
+        title: result.title,
+        url: result.media[0].gif.url,
+        itemurl: result.itemurl,
+      }));
+      res.render('home', { gifs });
+    } catch (error) {
+      console.error(error);
+      res.status(500).send('Error getting trending GIFs');
+    }
+  });
 
 app.get('/greetings/:name', (req, res) => {
     // grab the name from the path provided
