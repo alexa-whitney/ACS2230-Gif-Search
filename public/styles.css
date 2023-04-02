@@ -1,12 +1,21 @@
 /* ROOT FONT STYLES */
+@font-face {
+    font-family: 'Shadows Into Light';
+    src: url('./fonts/shadows-into-light') format('woff2'),
+         url('./fonts/shadows-into-light') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
 * {
-    font-family: "Lato", Helvetica, sans-serif;
+    font-family: "Shadows Into Light", sans-serif;
     color: #fe7880;
     line-height: 1.5;
   }
   
   h1 {
     text-align: center;
+    font-size: 60px;
   }
 
   .container {
@@ -70,4 +79,5 @@
     margin-bottom: 20px;
     border: 10px solid turquoise;
     border-radius: 50px;
+    overflow: hidden;
   }
